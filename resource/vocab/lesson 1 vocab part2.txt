@@ -1,0 +1,16 @@
+hiragana,romaji,meaning
+した,shita,below / under
+くち,kuchi,mouth
+つくえ,tsukue,desk
+て,te,hand
+いと,ito,thread / string
+なつ,natsu,summer
+にし,nishi,west
+いぬ,inu,dog
+ねこ,neko,cat
+きのこ,kinoko,mushroom
+はこ,hako,box
+ひ,hi,fire / sun
+ふね,fune,boat / ship
+へい,hei,fence / wall
+ほし,hoshi,star

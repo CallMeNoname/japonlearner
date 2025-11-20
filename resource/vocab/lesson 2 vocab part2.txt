@@ -1,0 +1,16 @@
+hiragana,romaji,meaning
+きっさてん,kissaten,coffee shop
+きって,kitte,postage stamp
+あさって,asatte,day after tomorrow
+こっち,kocchi,this way/here
+ぎゃく,gyaku,opposite
+きゅうこう,kyuukou,express train
+べんきょう,benkyou,study
+ぎゃく,gyaku,opposite
+ぎゅうにく,gyuuniku,beef
+きんぎょ,kingyo,goldfish
+でんしゃ,densha,train
+しゅふ,shufu,homemaker
+としょかん,toshokan,library
+じんじゃ,jinja,shrine
+じゅうどう,juudou,judo

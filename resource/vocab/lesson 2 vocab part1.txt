@@ -1,0 +1,16 @@
+hiragana,romaji,meaning
+おかあさん,okaasan,mother
+おにいさん,oniisan,older brother
+くうき,kuuki,air
+おねえさん,oneesan,older sister
+せんせい,sensei,teacher
+すいえい,suiei,swimming
+こおり,koori,ice
+おおきい,ookii,big
+おとうさん,otousan,father
+おうえん,ouen,support/cheer
+けっこん,kekkon,marriage
+さっか,sakka,author
+きっぷ,kippu,ticket
+しっぱい,shippai,failure
+ざっし,zasshi,magazine

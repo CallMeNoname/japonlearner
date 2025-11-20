@@ -1,0 +1,16 @@
+hiragana,romaji,meaning
+こうじょう,koujou,factory
+こうちゃ,koucha,black tea
+ちゅうい,chuui,caution
+ちょきん,chokin,savings
+ぎゅうにく,gyuuniku,beef
+ひゃく,hyaku,one hundred
+ひょう,hyou,chart/table
+さんびゃく,sanbyaku,three hundred
+びょういん,byouin,hospital
+ろっぴゃく,roppyaku,six hundred
+みゃく,myaku,pulse
+みょうじ,myouji,surname
+しょうりゃく,shouryaku,omission
+りゅうがく,ryuugaku,study abroad
+りょこう,ryokou,travel

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Word Spinner</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 { margin-bottom: 1rem; }
+  #csv-input {
+    width: 90%; max-width: 600px;
+    height: 120px; padding: 10px;
+    border: 1px solid #ccc; border-radius: 10px;
+    resize: none; font-family: monospace;
+  }
+  #load-btn, #spin-btn {
+    margin-top: 1rem; padding: 0.7rem 1.5rem;
+    font-size: 1rem; border: none; border-radius: 8px;
+    background: #3498db; color: white; cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #load-btn:hover, #spin-btn:hover { background: #2980b9; }
+  #word-box {
+    margin-top: 2rem; background: white;
+    padding: 2rem 3rem; border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center; cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  #word-box:hover { transform: scale(1.05); }
+  #hiragana { font-size: 2.5rem; color: #2c3e50; }
+  #romaji, #meaning {
+    display: none; margin-top: 0.5rem;
+    font-size: 1.2rem; color: #555;
+  }
+</style>
+</head>
+<body>
+  <h1>🎯 Japanese Word Spinner</h1>
+  <textarea id="csv-input" placeholder="Paste CSV text here (with headers: hiragana,romaji,meaning)"></textarea>
+  <button id="load-btn">Load Words 📥</button>
+  <button id="spin-btn" disabled>Spin 🎡</button>
+
+  <div id="word-box" style="display:none;">
+    <div id="hiragana"></div>
+    <div id="romaji"></div>
+    <div id="meaning"></div>
+  </div>
+
+  <script>
+    let words = [];
+    let remaining = [];
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    document.getElementById("load-btn").addEventListener("click", () => {
+      const csvText = document.getElementById("csv-input").value.trim();
+      if (!csvText) return alert("Please paste CSV text first.");
+
+      const lines = csvText.split("\n").map(l => l.trim()).filter(l => l);
+      const headers = lines.shift().split(",").map(h => h.trim().toLowerCase());
+      const hIndex = headers.indexOf("hiragana");
+      const rIndex = headers.indexOf("romaji");
+      const mIndex = headers.indexOf("meaning");
+
+      if (hIndex === -1 || rIndex === -1 || mIndex === -1) {
+        alert("CSV must include headers: hiragana, romaji, meaning");
+        return;
+      }
+
+      words = lines.map(line => {
+        const cols = line.split(",");
+        return {
+          hiragana: cols[hIndex]?.trim(),
+          romaji: cols[rIndex]?.trim(),
+          meaning: cols[mIndex]?.trim(),
+        };
+      }).filter(w => w.hiragana && w.romaji && w.meaning);
+
+      if (!words.length) return alert("No valid words found in CSV.");
+
+      remaining = shuffle([...words]);
+      document.getElementById("spin-btn").disabled = false;
+      alert("✅ Words loaded! Click 'Spin 🎡' to start.");
+    });
+
+    document.getElementById("spin-btn").addEventListener("click", () => {
+      if (remaining.length === 0) {
+        remaining = shuffle([...words]);
+        alert("🔄 All words shown! Starting over with a new shuffle.");
+      }
+      const random = remaining.pop();
+      const box = document.getElementById("word-box");
+      const h = document.getElementById("hiragana");
+      const r = document.getElementById("romaji");
+      const m = document.getElementById("meaning");
+
+      h.textContent = random.hiragana;
+      r.textContent = random.romaji;
+      m.textContent = random.meaning;
+      r.style.display = "none";
+      m.style.display = "none";
+      box.style.display = "block";
+    });
+
+    document.getElementById("word-box").addEventListener("click", () => {
+      const r = document.getElementById("romaji");
+      const m = document.getElementById("meaning");
+      const isHidden = r.style.display === "none";
+      r.style.display = isHidden ? "block" : "none";
+      m.style.display = isHidden ? "block" : "none";
+    });
+  </script>
+</body>
+</html>
